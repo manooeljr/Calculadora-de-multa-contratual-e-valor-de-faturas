@@ -49,21 +49,21 @@
     <!-- Header Navigation Bar -->
     <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Branding Header without Logo -->
+            <div class="flex justify-between items-center h-16">
+                <!-- Title & Icon -->
                 <div class="flex items-center gap-3">
-                    <div class="p-2.5 bg-canaa-50 text-canaa-600 rounded-xl border border-canaa-100">
-                        <i class="fa-solid fa-calculator text-xl"></i>
+                    <div class="w-10 h-10 rounded-xl bg-canaa-500 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                        <i class="fa-solid fa-calculator"></i>
                     </div>
                     <div>
-                        <h1 class="text-lg font-bold text-slate-900 leading-tight">Canaã Telecom</h1>
-                        <p class="text-xs text-slate-500 font-medium">Calculadora de Multas & Faturas</p>
+                        <h1 class="text-base font-bold text-slate-900 leading-tight">Canaã Telecom</h1>
+                        <p class="text-xs font-medium text-slate-500">Calculadora de Multas & Faturas</p>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-2">
                     <button onclick="resetCurrentTab()" class="text-xs sm:text-sm bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium py-2 px-3 rounded-lg transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-rotate-left text-xs"></i> Limpar Dados
+                        <i class="fa-solid fa-rotate-left text-xs"></i> Limpar dados
                     </button>
                 </div>
             </div>
@@ -76,29 +76,33 @@
         <!-- Banner Titulo -->
         <div class="mb-8 bg-gradient-to-r from-canaa-600 to-canaa-800 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-                <i class="fa-solid fa-calculator text-9xl"></i>
+                <i class="fa-solid fa-file-invoice-dollar text-9xl"></i>
             </div>
             <div class="relative z-10 max-w-3xl">
                 <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide uppercase mb-3">Atendimento ao Cliente</span>
-                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Calculadora de Multa e Correção de Fatura</h1>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Calculadora de Multa e Faturas Proporcionais</h1>
                 <p class="mt-2 text-canaa-100 text-sm sm:text-base leading-relaxed">
-                    Ferramenta oficial para cálculo rápido e preciso de multas rescisórias (Pessoa Física e Jurídica) e abates proporcionais por dias sem conexão.
+                    Ferramenta oficial para cálculo rápido e preciso de multas rescisórias (PF e PJ), abates por indisponibilidade e faturas residuais de cancelamento.
                 </p>
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (4 Tabs) -->
         <div class="flex flex-wrap gap-2 border-b border-slate-200 mb-8 bg-white p-1.5 rounded-xl shadow-sm border">
-            <button id="tab-btn-pf" onclick="switchTab('pf')" class="tab-btn flex-1 sm:flex-none px-5 py-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 bg-canaa-500 text-white shadow-sm">
-                <i class="fa-solid fa-user text-base"></i>
+            <button id="tab-btn-pf" onclick="switchTab('pf')" class="tab-btn flex-1 sm:flex-none px-4 py-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 bg-canaa-500 text-white shadow-sm">
+                <i class="fa-solid fa-user text-sm"></i>
                 <span>Pessoa Física (PF)</span>
             </button>
-            <button id="tab-btn-pj" onclick="switchTab('pj')" class="tab-btn flex-1 sm:flex-none px-5 py-3 rounded-lg text-sm font-semibold text-slate-600 hover:text-canaa-600 hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                <i class="fa-solid fa-building text-base"></i>
+            <button id="tab-btn-pj" onclick="switchTab('pj')" class="tab-btn flex-1 sm:flex-none px-4 py-3 rounded-lg text-sm font-semibold text-slate-600 hover:text-canaa-600 hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-building text-sm"></i>
                 <span>Pessoa Jurídica (PJ - 30%)</span>
             </button>
-            <button id="tab-btn-conexao" onclick="switchTab('conexao')" class="tab-btn flex-1 sm:flex-none px-5 py-3 rounded-lg text-sm font-semibold text-slate-600 hover:text-canaa-600 hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                <i class="fa-solid fa-wifi text-base"></i>
+            <button id="tab-btn-residual" onclick="switchTab('residual')" class="tab-btn flex-1 sm:flex-none px-4 py-3 rounded-lg text-sm font-semibold text-slate-600 hover:text-canaa-600 hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-calculator text-sm"></i>
+                <span>Fatura Residual (Proporcional)</span>
+            </button>
+            <button id="tab-btn-conexao" onclick="switchTab('conexao')" class="tab-btn flex-1 sm:flex-none px-4 py-3 rounded-lg text-sm font-semibold text-slate-600 hover:text-canaa-600 hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wifi text-sm"></i>
                 <span>Dias Sem Conexão</span>
             </button>
         </div>
@@ -116,7 +120,7 @@
                             <span class="w-2 h-6 bg-canaa-500 rounded-full inline-block"></span>
                             Multa Rescisória - Pessoa Física
                         </h2>
-                        <p class="text-xs text-slate-500 mt-1">Desconto regressivo mensal de R$ 37,50 até o 12º mês de fidelidade.</p>
+                        <p class="text-xs text-slate-500 mt-1">Virada de mês no calendário reduz R$ 37,50 da multa inicial de R$ 450,00.</p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -145,16 +149,16 @@
                                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-medium text-sm">R$</span>
                                 <input type="number" step="0.01" id="pf-abate-mensal" value="37.50" oninput="calcularPF()" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-sm font-medium">
                             </div>
-                            <span class="text-[11px] text-slate-400 mt-1 block">Redução por mês transcorrido</span>
+                            <span class="text-[11px] text-slate-400 mt-1 block">Redução por virada de mês</span>
                         </div>
                     </div>
 
                     <!-- Regra Informativa PF -->
                     <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 text-xs text-slate-600 space-y-1">
                         <div class="font-semibold text-slate-800 flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-info text-canaa-500"></i> Regra de Cálculo PF (Virada de Mês):
+                            <i class="fa-solid fa-circle-info text-canaa-500"></i> Regra de Virada de Mês PF:
                         </div>
-                        <p>A redução de R$ 37,50 ocorre a cada virada de mês em relação à contratação. Ao virar o mês calendário (ex: de 31/07 para 01/08), é contabilizado 1 mês e abatido R$ 37,50 da multa inicial de R$ 450,00.</p>
+                        <p>Cada alteração de mês no calendário (ex: de 31/07 para 01/08) reduz R$ 37,50. Atingindo 12 meses virados, a multa torna-se R$ 0,00.</p>
                     </div>
                 </div>
 
@@ -199,7 +203,7 @@
                         </div>
                     </div>
 
-                    <!-- Inputs Modo Datas (Opcional) -->
+                    <!-- Inputs Modo Datas -->
                     <div id="pj-inputs-dates" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Cancelamento</label>
@@ -224,7 +228,60 @@
                     </div>
                 </div>
 
-                <!-- TAB 3: DIAS SEM CONEXÃO -->
+                <!-- TAB 3: FATURA RESIDUAL (PROPORCIONAL DE CANCELAMENTO) -->
+                <div id="tab-residual" class="tab-content hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                    <div class="border-b border-slate-100 pb-4">
+                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2 h-6 bg-canaa-500 rounded-full inline-block"></span>
+                            Fatura Residual (Cancelamento no Ciclo)
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Cálculo proporcional de dias utilizados quando o cliente cancela antes do fim do ciclo de faturamento.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Início do Ciclo</label>
+                            <input type="date" id="res-data-inicio" onchange="calcularResidual()" class="w-full px-3 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-xs font-medium">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Ex: 20/09</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fim do Ciclo Original</label>
+                            <input type="date" id="res-data-fim" onchange="calcularResidual()" class="w-full px-3 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-xs font-medium">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Ex: 20/10</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Data do Cancelamento</label>
+                            <input type="date" id="res-data-canc" onchange="calcularResidual()" class="w-full px-3 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-xs font-medium">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Ex: 10/10</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Valor Mensal do Plano (R$)</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-medium text-sm">R$</span>
+                                <input type="number" step="0.01" id="res-valor-plano" placeholder="99.90" oninput="calcularResidual()" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-sm font-medium">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Total Dias do Ciclo (Padrão)</label>
+                            <input type="number" id="res-dias-totais" value="30" oninput="calcularResidual()" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-canaa-500 focus:border-canaa-500 outline-none transition-all text-slate-800 text-sm font-medium">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Padrão fixo: 30 dias para cálculo comercial</span>
+                        </div>
+                    </div>
+
+                    <!-- Regra Informativa Residual -->
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 text-xs text-slate-600 space-y-1">
+                        <div class="font-semibold text-slate-800 flex items-center gap-1.5">
+                            <i class="fa-solid fa-calculator text-canaa-500"></i> Fórmula da Fatura Residual:
+                        </div>
+                        <p class="font-mono text-slate-700">Dias Utilizados = (Data Cancelamento - Data Início Ciclo + 1)</p>
+                        <p class="font-mono text-slate-700">Valor Residual = (Valor Plano ÷ 30) × Dias Utilizados</p>
+                    </div>
+                </div>
+
+                <!-- TAB 4: DIAS SEM CONEXÃO -->
                 <div id="tab-conexao" class="tab-content hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
                     <div class="border-b border-slate-100 pb-4">
                         <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -274,7 +331,7 @@
             <div class="lg:col-span-5 space-y-6">
                 
                 <!-- Display Result Card -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden sticky top-28">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden sticky top-24">
                     
                     <div class="bg-slate-900 text-white p-5 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-canaa-300 flex items-center gap-2">
@@ -302,16 +359,18 @@
                         <!-- Action Copy Button -->
                         <button onclick="copySummaryToClipboard()" class="w-full bg-canaa-500 hover:bg-canaa-600 text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99]">
                             <i class="fa-regular fa-copy"></i>
-                            <span>Copiar Resumo para CRM</span>
+                            <span>Copiar Resumo</span>
                         </button>
 
-                        <!-- Copy Feedback Message Toast -->
-                        <div id="copy-toast" class="hidden text-xs text-center py-2.5 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all"></div>
+                        <!-- Copy Feedback Message -->
+                        <div id="copy-toast" class="hidden bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs text-center py-2 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-check-circle"></i> Resumo copiado com sucesso!
+                        </div>
                     </div>
 
                     <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 text-[11px] text-slate-400 flex justify-between items-center">
-                        <span>Canaã Telecom Sistema Interno</span>
-                        <span>v2.0 • 2026</span>
+                        <span>Canaã Telecom • Painel Operacional</span>
+                        <span>v2.6</span>
                     </div>
 
                 </div>
@@ -343,7 +402,16 @@
             document.getElementById('cx-data-inicio').value = `${year}-${month}-01`;
             document.getElementById('cx-data-fim').value = todayStr;
 
-            // Run initial calculations
+            // Default dates Residual
+            document.getElementById('res-data-inicio').value = `${year}-${month}-01`;
+            document.getElementById('res-data-canc').value = todayStr;
+            
+            // Set end of month date for residual cycle
+            const lastDay = new Date(year, today.getMonth() + 1, 0).getDate();
+            const lastDayStr = String(lastDay).padStart(2, '0');
+            document.getElementById('res-data-fim').value = `${year}-${month}-${lastDayStr}`;
+
+            // Run initial calculation
             calcularPF();
         });
 
@@ -362,23 +430,28 @@
 
             // Activate current tab button
             const activeBtn = document.getElementById(`tab-btn-${tab}`);
-            activeBtn.classList.add('bg-canaa-500', 'text-white', 'shadow-sm');
-            activeBtn.classList.remove('text-slate-600', 'hover:text-canaa-600', 'hover:bg-slate-50');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-canaa-500', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600', 'hover:text-canaa-600', 'hover:bg-slate-50');
+            }
 
             // Show current content
-            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            const contentEl = document.getElementById(`tab-${tab}`);
+            if (contentEl) contentEl.classList.remove('hidden');
 
             // Update badge
             const badgeMap = {
                 'pf': 'PESSOA FÍSICA',
                 'pj': 'PESSOA JURÍDICA',
+                'residual': 'FATURA RESIDUAL',
                 'conexao': 'DIAS SEM CONEXÃO'
             };
-            document.getElementById('card-badge').innerText = badgeMap[tab];
+            document.getElementById('card-badge').innerText = badgeMap[tab] || 'SISTEMA';
 
             // Trigger corresponding calculation
             if (tab === 'pf') calcularPF();
             if (tab === 'pj') calcularPJ();
+            if (tab === 'residual') calcularResidual();
             if (tab === 'conexao') calcularConexao();
         }
 
@@ -420,7 +493,7 @@
             return new Date(y, m - 1, d);
         }
 
-        // --- 1. CÁLCULO PESSOA FÍSICA ---
+        // --- 1. CÁLCULO PESSOA FÍSICA (VIRADA DE MÊS) ---
         function calcularPF() {
             const dataInicioStr = document.getElementById('pf-data-inicio').value;
             const dataCancStr = document.getElementById('pf-data-cancelamento').value;
@@ -436,7 +509,7 @@
 
             if (!dataInicioStr || !dataCancStr) {
                 resultVal.innerText = formatBRL(0);
-                resultSub.innerText = "Selecione as datas inicial e final";
+                resultSub.innerText = "Selecione as datas para calcular";
                 breakdown.innerHTML = `<div class="text-slate-400 py-2">Aguardando inserção de datas...</div>`;
                 return;
             }
@@ -447,31 +520,28 @@
             if (dCanc < dInicio) {
                 resultVal.innerText = formatBRL(0);
                 resultSub.innerText = "Data de cancelamento anterior à contratação";
-                breakdown.innerHTML = `<div class="text-rose-500 py-2 font-medium">Erro: Data de cancelamento não pode ser anterior à data de contratação.</div>`;
+                breakdown.innerHTML = `<div class="text-rose-500 py-2 font-medium">Erro: Data de cancelamento não pode ser anterior à contratação.</div>`;
                 return;
             }
 
-            // Boundary logic for month changes: 31/07 to 01/08 reduces R$ 37.50
-            let mesesTranscorridos = (dCanc.getFullYear() - dInicio.getFullYear()) * 12 + (dCanc.getMonth() - dInicio.getMonth());
-
-            if (mesesTranscorridos < 0) mesesTranscorridos = 0;
+            // Calculation logic based on calendar month transitions (virada de mês)
+            let mesesVirados = (dCanc.getFullYear() - dInicio.getFullYear()) * 12 + (dCanc.getMonth() - dInicio.getMonth());
+            if (mesesVirados < 0) mesesVirados = 0;
 
             let multaFinal = 0;
             let descontoTotal = 0;
 
-            if (mesesTranscorridos >= 12) {
+            if (mesesVirados >= 12) {
                 multaFinal = 0;
                 descontoTotal = valorBase;
             } else {
-                descontoTotal = mesesTranscorridos * abateMensal;
+                descontoTotal = mesesVirados * abateMensal;
                 multaFinal = valorBase - descontoTotal;
-                if (multaFinal < 37.50 && valorBase > 0) {
-                    multaFinal = 37.50; // Minimum limit
-                }
+                if (multaFinal < 0) multaFinal = 0;
             }
 
             resultVal.innerText = formatBRL(multaFinal);
-            resultSub.innerText = mesesTranscorridos >= 12 ? "Fidelidade cumprida (Sem multa)" : `${mesesTranscorridos} mês(es) cumprido(s) de 12`;
+            resultSub.innerText = mesesVirados >= 12 ? "Fidelidade cumprida (Sem multa)" : `${mesesVirados} virada(s) de mês de 12`;
 
             breakdown.innerHTML = `
                 <div class="flex justify-between py-1.5 border-b border-slate-100">
@@ -479,21 +549,21 @@
                     <span class="font-semibold text-slate-800">${formatBRL(valorBase)}</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-100">
-                    <span class="text-slate-600">Meses Cumpridos:</span>
-                    <span class="font-semibold text-slate-800">${mesesTranscorridos} mês(es)</span>
+                    <span class="text-slate-600">Viradas de Mês Contabilizadas:</span>
+                    <span class="font-semibold text-slate-800">${mesesVirados} mês(es)</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-slate-100">
-                    <span class="text-slate-600">Desconto Acumulado (-):</span>
+                    <span class="text-slate-600">Abatimento Acumulado (-):</span>
                     <span class="font-semibold text-emerald-600">${formatBRL(descontoTotal)}</span>
                 </div>
                 <div class="flex justify-between py-1.5 text-slate-900 font-bold">
-                    <span>Multa Rescisória PF:</span>
+                    <span>Multa Rescisória PF Final:</span>
                     <span class="text-canaa-600">${formatBRL(multaFinal)}</span>
                 </div>
             `;
         }
 
-        // --- 2. CÁLCULO PESSOA JURÍDICA ---
+        // --- 2. CÁLCULO PESSOA JURÍDICA (30%) ---
         function calcularPJ() {
             const valorMensal = parseFloat(document.getElementById('pj-valor-mensal').value) || 0;
             let mesesRestantes = 0;
@@ -550,7 +620,75 @@
             `;
         }
 
-        // --- 3. CÁLCULO DIAS SEM CONEXÃO ---
+        // --- 3. CÁLCULO FATURA RESIDUAL (CANCELAMENTO NO CICLO - PADRÃO 30 DIAS) ---
+        function calcularResidual() {
+            const dInicioStr = document.getElementById('res-data-inicio').value;
+            const dCancStr = document.getElementById('res-data-canc').value;
+            const valorPlano = parseFloat(document.getElementById('res-valor-plano').value) || 0;
+            
+            // Padrão do período fixo em 30 dias para faturamento comercial
+            const diasTotaisCiclo = parseInt(document.getElementById('res-dias-totais').value) || 30;
+
+            const resultLabel = document.getElementById('result-label');
+            const resultVal = document.getElementById('result-main-val');
+            const resultSub = document.getElementById('result-subtitle');
+            const breakdown = document.getElementById('breakdown-list');
+
+            resultLabel.innerText = "Fatura Residual Proporcional";
+
+            if (!dInicioStr || !dCancStr) {
+                resultVal.innerText = formatBRL(0);
+                resultSub.innerText = "Preencha as datas para calcular";
+                breakdown.innerHTML = `<div class="text-slate-400 py-2">Aguardando inserção de datas...</div>`;
+                return;
+            }
+
+            const dInicio = parseLocalDate(dInicioStr);
+            const dCanc = parseLocalDate(dCancStr);
+
+            if (dCanc < dInicio) {
+                resultVal.innerText = formatBRL(0);
+                resultSub.innerText = "Cancelamento anterior ao início do ciclo";
+                breakdown.innerHTML = `<div class="text-rose-500 py-2 font-medium">Erro: Data de cancelamento não pode ser anterior ao início do ciclo.</div>`;
+                return;
+            }
+
+            // Calculo dos dias utilizados (diferença das datas + 1 dia)
+            const diffCanc = Math.abs(dCanc - dInicio);
+            const diasUtilizados = Math.ceil(diffCanc / (1000 * 60 * 60 * 24)) + 1;
+
+            // O valor diário é SEMPRE calculado sobre a base fixa de 30 dias
+            const valorDiario = valorPlano / diasTotaisCiclo;
+            const valorResidualFinal = valorDiario * diasUtilizados;
+
+            resultVal.innerText = formatBRL(valorResidualFinal);
+            resultSub.innerText = `${diasUtilizados} dia(s) utilizado(s) (Base de ${diasTotaisCiclo} dias)`;
+
+            breakdown.innerHTML = `
+                <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-600">Valor Mensal do Plano:</span>
+                    <span class="font-semibold text-slate-800">${formatBRL(valorPlano)}</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-600">Base Padrão do Ciclo:</span>
+                    <span class="font-semibold text-slate-800">${diasTotaisCiclo} dias</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-600">Valor Diário (Plano ÷ ${diasTotaisCiclo}):</span>
+                    <span class="font-semibold text-slate-800">${formatBRL(valorDiario)}/dia</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-600">Dias Utilizados no Ciclo:</span>
+                    <span class="font-semibold text-slate-800">${diasUtilizados} dia(s)</span>
+                </div>
+                <div class="flex justify-between py-1.5 text-slate-900 font-bold">
+                    <span>Valor Fatura Residual:</span>
+                    <span class="text-canaa-600">${formatBRL(valorResidualFinal)}</span>
+                </div>
+            `;
+        }
+
+        // --- 4. CÁLCULO DIAS SEM CONEXÃO ---
         function calcularConexao() {
             const dInicioStr = document.getElementById('cx-data-inicio').value;
             const dFimStr = document.getElementById('cx-data-fim').value;
@@ -616,8 +754,8 @@
             `;
         }
 
-        // --- COPY SUMMARY TO CLIPBOARD ---
-        async function copySummaryToClipboard() {
+        // --- COPIAR RESUMO PARA ÁREA DE TRANSFERÊNCIA ---
+        function copySummaryToClipboard() {
             let textToCopy = "";
 
             if (currentTab === 'pf') {
@@ -627,26 +765,42 @@
                 const mainVal = document.getElementById('result-main-val').innerText;
                 const sub = document.getElementById('result-subtitle').innerText;
 
-                textToCopy = `=== CANAÃ TELECOM - DEMONSTRATIVO DE MULTA PF ===\n`;
-                textToCopy += `Tipo: Pessoa Física\n`;
-                textToCopy += `Data Contratação: ${dInicio || 'N/A'}\n`;
-                textToCopy += `Data Cancelamento: ${dCanc || 'N/A'}\n`;
-                textToCopy += `Valor Base: ${formatBRL(valorBase)}\n`;
-                textToCopy += `Status: ${sub}\n`;
-                textToCopy += `VALOR FINAL DA MULTA: ${mainVal}\n`;
-                textToCopy += `==============================================`;
+                textToCopy = `=== CANAÃ TELECOM - RESUMO DE MULTA PF ===\n` +
+                    `Tipo: Pessoa Física\n` +
+                    `Data Contratação: ${dInicio || 'N/A'}\n` +
+                    `Data Cancelamento: ${dCanc || 'N/A'}\n` +
+                    `Valor Base: ${formatBRL(valorBase)}\n` +
+                    `Status: ${sub}\n` +
+                    `VALOR FINAL DA MULTA: ${mainVal}\n` +
+                    `=========================================`;
             } else if (currentTab === 'pj') {
                 const mensal = parseFloat(document.getElementById('pj-valor-mensal').value) || 0;
                 const mainVal = document.getElementById('result-main-val').innerText;
                 const sub = document.getElementById('result-subtitle').innerText;
 
-                textToCopy = `=== CANAÃ TELECOM - DEMONSTRATIVO DE MULTA PJ ===\n`;
-                textToCopy += `Tipo: Pessoa Jurídica (Regra 30%)\n`;
-                textToCopy += `Mensalidade Fatura: ${formatBRL(mensal)}\n`;
-                textToCopy += `Fidelidade Restante: ${sub}\n`;
-                textToCopy += `Percentual Multa: 30%\n`;
-                textToCopy += `VALOR FINAL DA MULTA PJ: ${mainVal}\n`;
-                textToCopy += `==============================================`;
+                textToCopy = `=== CANAÃ TELECOM - RESUMO DE MULTA PJ ===\n` +
+                    `Tipo: Pessoa Jurídica (Alíquota 30%)\n` +
+                    `Mensalidade do Plano: ${formatBRL(mensal)}\n` +
+                    `Fidelidade Restante: ${sub}\n` +
+                    `Percentual de Multa: 30%\n` +
+                    `VALOR FINAL DA MULTA PJ: ${mainVal}\n` +
+                    `=========================================`;
+            } else if (currentTab === 'residual') {
+                const dInicio = document.getElementById('res-data-inicio').value;
+                const dFim = document.getElementById('res-data-fim').value;
+                const dCanc = document.getElementById('res-data-canc').value;
+                const plano = parseFloat(document.getElementById('res-valor-plano').value) || 0;
+                const mainVal = document.getElementById('result-main-val').innerText;
+                const sub = document.getElementById('result-subtitle').innerText;
+
+                textToCopy = `=== CANAÃ TELECOM - FATURA RESIDUAL ===\n` +
+                    `Ciclo do Cliente: ${dInicio || 'N/A'} até ${dFim || 'N/A'}\n` +
+                    `Data do Cancelamento: ${dCanc || 'N/A'}\n` +
+                    `Valor Mensal do Plano: ${formatBRL(plano)}\n` +
+                    `Base do Cálculo: 30 dias fixos\n` +
+                    `Consumo: ${sub}\n` +
+                    `VALOR RESIDUAL FINAL: ${mainVal}\n` +
+                    `=======================================`;
             } else if (currentTab === 'conexao') {
                 const dInicio = document.getElementById('cx-data-inicio').value;
                 const dFim = document.getElementById('cx-data-fim').value;
@@ -654,59 +808,49 @@
                 const mainVal = document.getElementById('result-main-val').innerText;
                 const sub = document.getElementById('result-subtitle').innerText;
 
-                textToCopy = `=== CANAÃ TELECOM - CORREÇÃO DE FATURA (SEM SINAL) ===\n`;
-                textToCopy += `Período Sem Conexão: ${dInicio} até ${dFim}\n`;
-                textToCopy += `Valor Fatura Original: ${formatBRL(fatura)}\n`;
-                textToCopy += `Abate Proporcional: ${sub}\n`;
-                textToCopy += `VALOR DA FATURA CORRIGIDA: ${mainVal}\n`;
-                textToCopy += `=====================================================`;
+                textToCopy = `=== CANAÃ TELECOM - CORREÇÃO DE FATURA ===\n` +
+                    `Período sem Conexão: ${dInicio || 'N/A'} até ${dFim || 'N/A'}\n` +
+                    `Valor Fatura Original: ${formatBRL(fatura)}\n` +
+                    `Desconto Proporcional: ${sub}\n` +
+                    `VALOR CORRIGIDO DA FATURA: ${mainVal}\n` +
+                    `==========================================`;
             }
 
-            let success = false;
+            // Execute copy with fallback mechanism for maximum compatibility
+            const handleCopySuccess = () => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            };
 
-            // Method 1: Modern Clipboard API (where allowed by iframe permissions)
             if (navigator.clipboard && window.isSecureContext) {
-                try {
-                    await navigator.clipboard.writeText(textToCopy);
-                    success = true;
-                } catch (err) {
-                    success = false;
-                }
-            }
-
-            // Method 2: Fallback using execCommand with a temporary offscreen visible textarea
-            if (!success) {
-                try {
-                    const tempElem = document.createElement('textarea');
-                    tempElem.value = textToCopy;
-                    tempElem.style.position = 'fixed';
-                    tempElem.style.left = '-9999px';
-                    tempElem.style.top = '0';
-                    document.body.appendChild(tempElem);
-                    tempElem.focus();
-                    tempElem.select();
-                    success = document.execCommand('copy');
-                    document.body.removeChild(tempElem);
-                } catch (e) {
-                    success = false;
-                }
-            }
-
-            // Show Feedback Alert Toast
-            const toast = document.getElementById('copy-toast');
-            toast.classList.remove('hidden', 'bg-emerald-100', 'border-emerald-300', 'text-emerald-800', 'bg-rose-100', 'border-rose-300', 'text-rose-800');
-
-            if (success) {
-                toast.classList.add('bg-emerald-100', 'border', 'border-emerald-300', 'text-emerald-800');
-                toast.innerHTML = `<i class="fa-solid fa-check-circle"></i> Resumo copiado com sucesso! Pode colar no CRM.`;
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => handleCopySuccess())
+                    .catch(() => fallbackCopyText(textToCopy, handleCopySuccess));
             } else {
-                toast.classList.add('bg-rose-100', 'border', 'border-rose-300', 'text-rose-800');
-                toast.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Não foi possível copiar automaticamente.`;
+                fallbackCopyText(textToCopy, handleCopySuccess);
             }
+        }
 
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3500);
+        // Universal Fallback Copy Function
+        function fallbackCopyText(text, callback) {
+            const tempElem = document.createElement('textarea');
+            tempElem.value = text;
+            tempElem.style.position = 'fixed';
+            tempElem.style.left = '-9999px';
+            tempElem.style.top = '0';
+            document.body.appendChild(tempElem);
+            tempElem.focus();
+            tempElem.select();
+            try {
+                document.execCommand('copy');
+                if (callback) callback();
+            } catch (err) {
+                console.error('Falha ao copiar texto: ', err);
+            }
+            document.body.removeChild(tempElem);
         }
 
         // --- RESET CURRENT TAB FORM ---
@@ -723,6 +867,10 @@
                 document.getElementById('pj-data-fim').value = '';
                 document.getElementById('pj-meses-calc-display').value = '';
                 calcularPJ();
+            } else if (currentTab === 'residual') {
+                document.getElementById('res-valor-plano').value = '';
+                document.getElementById('res-dias-totais').value = '30';
+                calcularResidual();
             } else if (currentTab === 'conexao') {
                 document.getElementById('cx-valor-fatura').value = '';
                 document.getElementById('cx-dias-ciclo').value = '30';
